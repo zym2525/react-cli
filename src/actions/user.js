@@ -18,3 +18,10 @@ export const login = createAction(
     judge: result => result != null
   })
 )
+
+export const getSceneInfo = createAction(
+  LOGIN,
+  async () => {
+    return await userService.getSceneInfo()
+  }
+)

@@ -54,11 +54,11 @@ export function request (uri, type = 'GET', headers = {}, data = '', successCall
     .then(filterStatus)
     .then(filterJSON)
     .then((data) => {
-      // console.log(data)
+      console.log(data)
       if (successCallback) {
-        return successCallback(data.result);
+        return successCallback(data);
       }
-      return data.result;
+      return data;
     })
     .catch(function (error) {
       console.log(error, uri, data);
