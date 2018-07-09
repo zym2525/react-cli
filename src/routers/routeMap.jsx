@@ -1,10 +1,15 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
+import asyncComponent from '../utils/asyncComponent';
 
 import NotFound from '../view/404';
-import Home from '../view/Home/home';
-import Second from '../view/Second/second';
-import Third from '../view/Third/third';
+// import Home from '../view/Home/home';
+// import Second from '../view/Second/second';
+// import Third from '../view/Third/third';
+
+const Home =asyncComponent(()=>import("../view/Home/home"))
+const Second =asyncComponent(()=>import("../view/Second/second"))
+const Third = asyncComponent(()=>import("../view/Third/third"))
 
 class RouteMap extends React.Component {
   render () {

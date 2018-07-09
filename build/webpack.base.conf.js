@@ -32,13 +32,15 @@ module.exports = {
       : config.dev.assetsPublicPath
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.json'],
+    extensions: ['.js', '.jsx', '.json',".ts", ".tsx"],
     alias: {
       '@': resolve('src'),
     }
   },
   module: {
     rules: [
+      { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
+      { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
       ...(config.dev.useEslint ? [createLintingRule()] : []),
       {
         test: /\.(js|jsx)$/,

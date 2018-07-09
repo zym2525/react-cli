@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Input } from 'antd';
 import { login, getSceneInfo } from '../../services/userService';
+import * as Immutable from 'immutable'
 
 //redux
 import { connect } from 'react-redux'
@@ -14,6 +15,20 @@ class Home extends Component {
       username: '',
       password: ''
     };
+  }
+  componentDidMount(){
+    var alpha = Immutable.Map({a:1, b:2, c:3, d:4});
+    let set = Immutable.Set([1,2,3,3]);
+    let Repeat = Immutable.Repeat(1,5).toJS();
+    let Range = Immutable.Range(1,100,3).toJS();
+    let a=Immutable.fromJS({a:1, b:2, c:3, d:4},function (key, value, path) {
+      return value.toList()
+    })
+  
+    const map1 = Immutable.List([1,2,3,4])
+    const map2 = Immutable.Map({a:1, b:2, c:3, d:4})
+    
+    console.log(map2.set('a',10).toObject(),map1.get(1))
   }
   render() {
     let { username, password } = this.state;

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
+import {Modal} from 'antd';
 
 class Second extends Component {
   constructor (props, context) {
