@@ -39,8 +39,6 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
-      { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
       ...(config.dev.useEslint ? [createLintingRule()] : []),
       {
         test: /\.(js|jsx)$/,
@@ -81,7 +79,7 @@ module.exports = {
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
       }
-    ]
+    ],
   },
   node: {
     

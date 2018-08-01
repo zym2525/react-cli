@@ -7,6 +7,7 @@ import * as Immutable from 'immutable'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as userActions from '../../actions/user'
+import { promiseAll } from '../../services/userService'
 
 class Home extends Component {
   constructor(props, context) {
@@ -16,19 +17,21 @@ class Home extends Component {
       password: ''
     };
   }
-  componentDidMount(){
-    var alpha = Immutable.Map({a:1, b:2, c:3, d:4});
-    let set = Immutable.Set([1,2,3,3]);
-    let Repeat = Immutable.Repeat(1,5).toJS();
-    let Range = Immutable.Range(1,100,3).toJS();
-    let a=Immutable.fromJS({a:1, b:2, c:3, d:4},function (key, value, path) {
+  componentDidMount() {
+    var alpha = Immutable.Map({ a: 1, b: 2, c: 3, d: 4 });
+    let set = Immutable.Set([1, 2, 3, 3]);
+    let Repeat = Immutable.Repeat(1, 5).toJS();
+    let Range = Immutable.Range(1, 100, 3).toJS();
+    let a = Immutable.fromJS({ a: 1, b: 2, c: 3, d: 4 }, function (key, value, path) {
       return value.toList()
     })
-  
-    const map1 = Immutable.List([1,2,3,4])
-    const map2 = Immutable.Map({a:1, b:2, c:3, d:4})
-    
-    console.log(map2.set('a',10).toObject(),map1.get(1))
+
+    const map1 = Immutable.List([1, 2, 3, 4])
+    const map2 = Immutable.Map({ a: 1, b: 2, c: 3, d: 4 })
+    let s = Symbol();
+    console.log(typeof s);
+    console.log(map2.set('a', 10).toObject(), map1.get(1))
+    promiseAll();
   }
   render() {
     let { username, password } = this.state;
