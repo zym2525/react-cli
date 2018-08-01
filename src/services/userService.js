@@ -25,6 +25,7 @@ export function getList(data, success, failed) {
 
 export function promiseAll(params1, params2) {
   console.log(456)
+  console.log(123)
   return Promise.all([getSceneInfo(), getList()]).then(([d1, d2]) => {
     console.log(d1, d2)
     return [d1, d2];
