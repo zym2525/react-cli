@@ -6,7 +6,8 @@ import {
 
 let initialState = {
   user: null,
-  error: null
+  error: null,
+  saga: null
 };
 
 export default function (state = initialState, action) {
@@ -20,6 +21,9 @@ export default function (state = initialState, action) {
   switch (action.type) {
     case LOGIN:
       return { ...state, user: action.payload };
+    case 'HelloSaga':
+      console.log(action)
+      return { ...state, saga: 'HelloSaga' };
     default:
       return state;
   }

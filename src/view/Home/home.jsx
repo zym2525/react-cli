@@ -31,7 +31,7 @@ class Home extends Component {
     let s = Symbol();
     console.log(typeof s);
     console.log(map2.set('a', 10).toObject(), map1.get(1))
-    promiseAll();
+    // promiseAll();
   }
   render() {
     let { username, password } = this.state;
