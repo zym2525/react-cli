@@ -9,7 +9,16 @@ import { bindActionCreators } from 'redux'
 import * as userActions from '../../actions/user'
 import { promiseAll } from '../../services/userService'
 
-class Home extends Component {
+class SonHome extends Component {
+  constructor(props, context) {
+    super(props, context);
+  }
+  componentDidMount() {
+    console.log('ni hao a')
+  }
+}
+
+class Home extends SonHome {
   constructor(props, context) {
     super(props, context);
     this.state = {
@@ -18,6 +27,7 @@ class Home extends Component {
     };
   }
   componentDidMount() {
+    super.componentDidMount && super.componentDidMount()
     var alpha = Immutable.Map({ a: 1, b: 2, c: 3, d: 4 });
     let set = Immutable.Set([1, 2, 3, 3]);
     let Repeat = Immutable.Repeat(1, 5).toJS();
@@ -37,10 +47,10 @@ class Home extends Component {
     let { username, password } = this.state;
     return (
       <div>
-        <div>Hello World</div>
+        <div className='asd'>Hello World</div>
         <Input placeholder="请输入账号" value={username} onChange={e => { this.setState({ username: e.target.value }); }} />
         <Input placeholder="请输入密码" value={password} onChange={e => { this.setState({ password: e.target.value }); }} />
-        <div onClick={this.handleClick.bind(this)}>提交</div>
+        <div onClick={this.props.handleClick.bind(this)}>提交</div>
       </div>
     );
   }
@@ -48,10 +58,25 @@ class Home extends Component {
     let { username, password } = this.state;
     let { userActions } = this.props;
     userActions.getSceneInfo();
+    click
+    oDiv = document.getElementsByClassName('asd')[0];
+    // function click(fn) {
+    //   oDiv.addEventListener('click', (e) => {
+    //     let ev = e || event
+    //     if (!fn.call(this, ev)) {apply
+
+    //     }
+    //   }, false)
+    // }
+
   }
 }
 
 export default connect((state, props) => ({
 }), (dispatch) => ({
   userActions: bindActionCreators(userActions, dispatch),
+  handleClick() {
+    console.log('click')
+    dispatch({ type: 'click' })
+  }
 }))(Home);
