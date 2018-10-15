@@ -1,5 +1,4 @@
 'use strict'
-// Template version: 1.3.1
 
 const path = require('path')
 
