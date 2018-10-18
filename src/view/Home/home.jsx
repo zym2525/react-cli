@@ -9,6 +9,8 @@ import { bindActionCreators } from 'redux'
 import * as userActions from '../../actions/user'
 import { promiseAll } from '../../services/userService'
 
+import './home.less'
+
 class SonHome extends Component {
   constructor(props, context) {
     super(props, context);
@@ -42,6 +44,22 @@ class Home extends SonHome {
     console.log(typeof s);
     console.log(map2.set('a', 10).toObject(), map1.get(1))
     // promiseAll();
+    const props = {
+      user: {
+        posts: [
+          { title: 'Foo', comments: ['Good one!', 'Interesting...'] },
+          { title: 'Bar', comments: ['Ok'] },
+          { title: 'Baz', comments: [] }
+        ],
+        comments: ['Good one!', 'Interesting...']
+      }
+    }
+    const get = (p, o) => p.reduce((xs, x) => {
+      // console.log(xs, x)
+      return (xs && xs[x]) ? xs[x] : null
+    }, o)
+    console.log(get(['user', 'posts', 0, 'comments'], props))
+    console.log(get(['user', 'post', 0, 'comments'], props))
   }
   render() {
     let { username, password } = this.state;
